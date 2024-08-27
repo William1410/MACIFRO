@@ -4,7 +4,7 @@
 from extra import fim, green, red
 
 
-class SistemaCadastro:
+class SistemaCadastro:# arrumado
 
   def __init__(self, nome, senha, email):
     self.nome = nome
@@ -16,7 +16,7 @@ class SistemaCadastro:
     
 
 
-class Sistemalogin:
+class Sistemalogin: #Arrumado
 
   def __init__(self, nome, senha):
     self.nome = nome
@@ -48,11 +48,11 @@ class CadastroAluno(SistemaCadastro):
     super().__init__(nome, senha, email)
     
 
-  def Cadastro(self, lista):
-    super().Cadastro(lista)
+  def Cadastro(self, lista,objeto):
+    super().Cadastro(lista,objeto)
 
 
-class CadastroAdm(SistemaCadastro):
+class CadastroAdm(SistemaCadastro):#arrumado
 
   def __init__(self, nome, senha, email,cod = '101'): # cod é a verificação do ADM
     super().__init__(nome, senha, email)
@@ -79,7 +79,7 @@ class LoginAluno(Sistemalogin):
     super().verificar(lista)
 
   
-class LoginAdm(Sistemalogin):
+class LoginAdm(Sistemalogin):#Arrumado
   def __init__(self, nome, senha,cod = '101'):
     super().__init__(nome, senha)
     self.cod = cod
