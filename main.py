@@ -1,10 +1,9 @@
-from classe import Sistemalogin, CadastroAluno, CadastroAdm
+from classe import LoginAdm, CadastroAluno, CadastroAdm
 from extra import red, green, fim, clear
 
-codigo = 101
 
-objeto_acessor = Sistemalogin(' ',' ')
-objeto_acessor2 = CadastroAluno(' ', ' ', ' ')
+objeto_acessor = LoginAdm(' ',' ',' ')
+objeto_acessor2 = CadastroAdm(' ', ' ', ' ')
 
 ADM_conta = {}
 Aluno_conta = {'Davi': ['1234', 'Davifghk11@gmail.com']}  # Exemplo de conta
@@ -33,8 +32,12 @@ def logar(subclasse):
   objeto_acessor = subclasse(nome, senha)
 
 
-cadastrar(CadastroAluno)
-objeto_acessor2.Cadastro(Aluno_conta)
-logar(Sistemalogin)
-objeto_acessor.verificar(Aluno_conta)
+
+
+
+cadastrar(CadastroAdm)
+objeto_acessor2.Cadastro(ADM_conta)
+logar(LoginAdm)
+objeto_acessor.verificar(ADM_conta)
+print(f'/n/n {ADM_conta}')
 

@@ -43,6 +43,13 @@ class Sistemalogin:
       print('Usuario inexistente')
 
 
+
+
+
+
+
+
+
 class CadastroAluno(SistemaCadastro):
 
   def __init__(self, nome, senha, email):
@@ -55,13 +62,40 @@ class CadastroAluno(SistemaCadastro):
 
 class CadastroAdm(SistemaCadastro):
 
-  def __init__(self, nome, senha, email):
+  def __init__(self, nome, senha, email,cod = '101'): # cod é a verificação do ADM
     super().__init__(nome, senha, email)
+    self.cod = cod
 
   def Cadastro(self, dicionario):
-    cod = 101
-    cod_adm = int(input('Informa o numero de ADM: '))
-    if cod_adm == cod:
+
+    cod_adm = input('Informa o numero de ADM: ')
+    if cod_adm == self.cod:
       super().Cadastro(dicionario)
     else:
       print('Incorreto')
+
+
+
+
+
+
+class LoginAluno(Sistemalogin):
+  def __init__(self, nome, senha):
+    super().__init__(nome, senha)
+  
+  def verificar(self, dicionario):
+    super().verificar(dicionario)
+
+  
+class LoginAdm(Sistemalogin):
+  def __init__(self, nome, senha,cod = '101'):
+    super().__init__(nome, senha)
+    self.cod = cod
+
+  def Cadastro(self, dicionario) -> None:
+    cod_adm = input('Informe o cod de ADM:')
+
+    if cod_adm == self.cod:
+      super().Cadastro(dicionario)
+    else:
+      print(f'{red}Codigo invalido{fim}')
