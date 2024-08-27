@@ -3,7 +3,7 @@ from os import system
 
 
 def clear():
-  system('clear')
+  system('cls')
 
 
 red = '\033[31m'
