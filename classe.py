@@ -13,6 +13,7 @@ class SistemaCadastro:# arrumado
 
   def Cadastro(self, lista,objeto) -> None:
     lista.append(objeto)
+    print(f'{green}Cadastro feito com sucesso{fim}')
     
 
 
@@ -26,13 +27,18 @@ class Sistemalogin: #Arrumado
       self, lista
   ):  # mudar variavel 'lista' pela de vocês na hora da subclasse
 
-    for c in lista:
-      if c.nome == self.nome and c.senha == self.senha:
+    if len(lista) > 0:
+      for c in lista:
+          
+        if c.nome == self.nome and c.senha == self.senha:
 
-        print(f'{green}Login realizado com sucesso{fim}')
-      else:
+          print(f'{green}Login realizado com sucesso{fim}')
+          
+        else:
+          print('f{red}Valores incorretos{fim}')
 
-        print(f'{red}Valores invalidos{fim}')
+    else:
+      print(f'{red}Não possue contas no banco dados {fim}')
 
 
 
