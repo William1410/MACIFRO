@@ -1,3 +1,6 @@
+
+
+
 from extra import fim, green, red
 
 
@@ -32,6 +35,7 @@ class Sistemalogin:
       if dicionario[self.nome][0] == self.senha:
 
         print(f'{green}Login realizado com sucesso{fim}')
+
       else:
         print(f'{red}Valores invalidos{fim}')
 
@@ -43,6 +47,7 @@ class CadastroAluno(SistemaCadastro):
 
   def __init__(self, nome, senha, email):
     super().__init__(nome, senha, email)
+    
 
   def Cadastro(self, dicionario):
     super().Cadastro(dicionario)

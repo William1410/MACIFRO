@@ -4,7 +4,7 @@ from extra import red, green, fim, clear
 codigo = 101
 
 objeto_acessor = Sistemalogin(' ',' ')
-objeto_acessor2 = CadastroAdm(' ', ' ', ' ')
+objeto_acessor2 = CadastroAluno(' ', ' ', ' ')
 
 ADM_conta = {}
 Aluno_conta = {'Davi': ['1234', 'Davifghk11@gmail.com']}  # Exemplo de conta
@@ -33,11 +33,8 @@ def logar(subclasse):
   objeto_acessor = subclasse(nome, senha)
 
 
-cadastrar(CadastroAdm)
+cadastrar(CadastroAluno)
+objeto_acessor2.Cadastro(Aluno_conta)
+logar(Sistemalogin)
+objeto_acessor.verificar(Aluno_conta)
 
-objeto_acessor2.Cadastro(ADM_conta)
-objeto_acessor.verificar(ADM_conta)
-
-'''logar(Sistemalogin)
-objeto_acessor.verificar(ADM_conta)'''
-print(ADM_conta)
