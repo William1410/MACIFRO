@@ -2,7 +2,7 @@
 Integrantes:  Davi Tavares dos Santos, WILLIAM CAVALCANTE DAMACENO, Júlia Marcelly Braga Belchior, João Vitor Silva Maciel, Layra Vitória Mota Leal'''
 
 from classe import LoginAdm, CadastroAluno, CadastroAdm,LoginAluno
-from extra import red, green, fim, clear
+from extra import red,fim, clear
 
 
 
@@ -34,7 +34,6 @@ def menu():
     global objeto_acessor,ADM_conta,Aluno_conta,clear
 
     while True:
-        clear()
     
         print(f'''
 {'========== MENU =========='}
@@ -110,7 +109,7 @@ Olá, seja bem vindo ao MecIFRO, o que você deseja fazer?
                 break
             
         else:
-            print(red('Opção inválida. Tente novamente.'))
+            print(f'{red}Opção inválida. Tente novamente.{fim}')
 
 
 menu()
