@@ -11,14 +11,9 @@ class SistemaCadastro:
     self.email = email
     self.senha = senha
 
-  def Cadastro(self, dicionario) -> None:
-    if dicionario.get(self.nome) is not None:
-      if dicionario[self.nome][0] == self.senha:
-        print(f'{red}Usuario já existente{fim}')
-
-    else:
-      print(f'{green}Cadastro Realizado{fim}')
-      dicionario[self.nome] = [self.senha, self.email]
+  def Cadastro(self, lista,objeto) -> None:
+    lista.append(objeto)
+    
 
 
 class Sistemalogin:
@@ -28,19 +23,16 @@ class Sistemalogin:
     self.senha = senha
 
   def verificar(
-      self, dicionario
-  ):  # mudar variavel 'dicionario' pela de vocês na hora da subclasse
+      self, lista
+  ):  # mudar variavel 'lista' pela de vocês na hora da subclasse
 
-    if dicionario.get(self.nome) is not None:
-      if dicionario[self.nome][0] == self.senha:
+    for c in lista:
+      if c.nome == self.nome and c.senha == self.senha:
 
         print(f'{green}Login realizado com sucesso{fim}')
-
       else:
-        print(f'{red}Valores invalidos{fim}')
 
-    else:
-      print('Usuario inexistente')
+        print(f'{red}Valores invalidos{fim}')
 
 
 
@@ -56,8 +48,8 @@ class CadastroAluno(SistemaCadastro):
     super().__init__(nome, senha, email)
     
 
-  def Cadastro(self, dicionario):
-    super().Cadastro(dicionario)
+  def Cadastro(self, lista):
+    super().Cadastro(lista)
 
 
 class CadastroAdm(SistemaCadastro):
@@ -66,11 +58,11 @@ class CadastroAdm(SistemaCadastro):
     super().__init__(nome, senha, email)
     self.cod = cod
 
-  def Cadastro(self, dicionario):
+  def Cadastro(self, lista,objeto):
 
     cod_adm = input('Informa o numero de ADM: ')
     if cod_adm == self.cod:
-      super().Cadastro(dicionario)
+      super().Cadastro(lista,objeto)
     else:
       print('Incorreto')
 
@@ -83,8 +75,8 @@ class LoginAluno(Sistemalogin):
   def __init__(self, nome, senha):
     super().__init__(nome, senha)
   
-  def verificar(self, dicionario):
-    super().verificar(dicionario)
+  def verificar(self, lista):
+    super().verificar(lista)
 
   
 class LoginAdm(Sistemalogin):
@@ -92,10 +84,11 @@ class LoginAdm(Sistemalogin):
     super().__init__(nome, senha)
     self.cod = cod
 
-  def Cadastro(self, dicionario) -> None:
+  def verificar(self, lista) -> None:
     cod_adm = input('Informe o cod de ADM:')
 
     if cod_adm == self.cod:
-      super().Cadastro(dicionario)
+      super().verificar(lista)
+
     else:
       print(f'{red}Codigo invalido{fim}')
