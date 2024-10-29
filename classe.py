@@ -112,3 +112,5 @@ class LoginAdm(Sistemalogin):#Arrumado
 
     else:
       print(f'{red}Codigo invalido{fim}')
+
+#lalala
