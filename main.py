@@ -120,29 +120,3 @@ menu()
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-'''
-'
-
-print('ADM BOSTA')
-cadastrar(CadastroAdm,ADM_conta)
-logar(LoginAdm,ADM_conta)
-
-
-
-
-print('Aluno bosta')
-cadastrar(CadastroAluno,Aluno_conta)
-logar(LoginAluno,Aluno_conta)
-'''
