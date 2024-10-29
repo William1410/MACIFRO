@@ -6,41 +6,39 @@ from extra import fim, green, red
 
 class SistemaCadastro(ABC):# arrumado
 
-  def __init__(self, nome, senha, email):
+  def __init__(self, nome: str, senha: str, email: str):
     self.__nome = nome
     self.__email = email
     self.__senha = senha
 
-  def Cadastro(self, lista,objeto) -> None:
+  def Cadastro(self, lista: list ,objeto: object) -> None:
     lista.append(objeto)
     print(f'{green}Cadastro feito com sucesso{fim}')
     
-  def getNome(self):
+  def getNome(self) -> str: 
     return self.__nome
-  def getSenha(self):
+  def getSenha(self) -> str:
     return self.__senha
 
 
 class Sistemalogin(ABC): #Arrumado
 
-  def __init__(self, nome, senha):
+  def __init__(self, nome: str, senha: str):
     self.__nome = nome
     self.__senha = senha
     
    
-  def verificar(   
-      self, lista
-  ):  # mudar variavel 'lista' pela de vocês na hora da subclasse
+  def verificar(self, lista: list):  # mudar variavel 'lista' pela de vocês na hora da subclasse
 
     if len(lista) > 0:
       for c in lista:
         if c.getNome() == self.__nome and c.getSenha() == self.__senha:
           print(f'{green}Login realizado com sucesso{fim}')
-          login_sucesso = True
-          break
+          
+          
 
-      if not login_sucesso:
-        print(f'{red}Valores incorretos{fim}')
+        else: 
+          print(f'{red}Valores incorretos{fim}')
 
     else:
       print(f'{red}Não possue contas no banco dados {fim}')
@@ -84,8 +82,6 @@ class CadastroAdm(SistemaCadastro):#arrumado
       super().Cadastro(lista,objeto)
     else:
       print(f'{red}Conta não cadastrada no banco de dados{fim}')
-
-
 
 
 
