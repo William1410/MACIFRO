@@ -9,6 +9,7 @@ from extra import red,fim, clear
 ADM_conta = []
 Aluno_conta = [] # Exemplo de conta
 
+#testeee
 
 def cadastrar(subclasse,lista):
 
