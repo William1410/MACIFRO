@@ -85,11 +85,6 @@ class CadastroAdm(SistemaCadastro):#arrumado
     else:
       print(f'{red}Conta não cadastrada no banco de dados{fim}')
 
-
-
-
-
-
 class LoginAluno(Sistemalogin):
   def __init__(self, nome, senha):
     super().__init__(nome, senha)
@@ -113,4 +108,24 @@ class LoginAdm(Sistemalogin):#Arrumado
     else:
       print(f'{red}Codigo invalido{fim}')
 
+
+class Comida:
+  def __init__(self, valor: int, nome: str, ingredientes: str):
+    self.valor = valor
+    self.nome = nome
+    self.ingredientes = ingredientes
+
+ 
+class Lanche(Comida):
+  def __init__(self, valor: int, nome: str, ingredientes: str, quantidade:int):
+    super().__init__(valor, nome, ingredientes)
+    self.quantidade = quantidade
+
+ 
+class Almoco(Comida):
+  def __init__(self, valor: int, nome: str, ingredientes: str, precoPorPeso: int, horario: int):
+    super().__init__(valor, nome, ingredientes)
+    self.precoPorPeso = precoPorPeso
+    self.horario = horario
+  
 #lalala
