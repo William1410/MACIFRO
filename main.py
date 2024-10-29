@@ -10,7 +10,7 @@ ADM_conta = []
 Aluno_conta = [] # Exemplo de conta
 
 
-def cadastrar(subclasse,lista):
+def cadastrar(subclasse,lista: list):
 
   nome = input('Digite seu nome:')
   senha = input('Digite seu senha:')
@@ -18,7 +18,7 @@ def cadastrar(subclasse,lista):
   objeto_acessor = subclasse(nome, senha, email)
   objeto_acessor.Cadastro(lista,objeto_acessor)
   
-def logar(subclasse,lista):  
+def logar(subclasse,lista: list):  
 
   global objeto_acessor
   
@@ -31,86 +31,73 @@ def logar(subclasse,lista):
 
 
 def menu():
-    global objeto_acessor,ADM_conta,Aluno_conta,clear
+    global objeto_acessor, ADM_conta, Aluno_conta, clear
 
     while True:
-    
+        
         print(f'''
 {'========== MENU =========='}
 Olá, seja bem vindo ao MecIFRO, o que você deseja fazer?
 1. Cadastrar 
-2. login
+2. Login
 ''')
         opcao = input('Escolha uma opção: ')
         
         if opcao == '1':
             clear()
             while True:
-              print(f'''
+                print(f'''
 {'========== CADASTRO =========='}
 1. Cadastrar como aluno
 2. Cadastrar como admin
 3. Voltar ao menu
-      ''')
-              escolha = input('Escolha uma opção: ')
-              if escolha =='1':
-                clear()
-                print("\n===========CADASTRO DE ALUNO===========")  
-                cadastrar (CadastroAluno,Aluno_conta)
+                ''')
+                escolha = input('Escolha uma opção: ')
+                if escolha == '1':
+                    clear()
+                    print("\n===========CADASTRO DE ALUNO===========")  
+                    cadastrar(CadastroAluno, Aluno_conta)
+
+                elif escolha == '2':
+                    clear()
+                    print("\n===========CADASTRO DE ADMIN===========")
+                    cadastrar(CadastroAdm, ADM_conta)
+
+                elif escolha == '3':
+                    clear()
+                    return menu()
                 
-          
-
-              elif escolha == '2':
-                clear()
-                print("\n===========CADASTRO DE ADMIN===========")
-                cadastrar (CadastroAdm,ADM_conta)
-                
-
-
-              elif opcao == '3':
-                clear()
-                return menu
-              
-              else:
-                pass
-                break
-    
-
-
+                else:
+                    break
 
         elif opcao == '2':
-          while True:
-
-              print(f'''
+            clear()
+            while True:
+                print(f'''
 {'========== LOGIN =========='}
 1. Login como aluno
 2. Login como admin
 3. Voltar ao menu''')
-              alternativa = input('Escolha uma opção: ')
-              if alternativa =='1':
-                clear()
-                print("\n===========LOGIN DE ALUNO===========")  
-                logar(LoginAluno,Aluno_conta)
-                
+                alternativa = input('Escolha uma opção: ')
+                if alternativa == '1':
+                    clear()
+                    print("\n===========LOGIN DE ALUNO===========")  
+                    logar(LoginAluno, Aluno_conta)
 
-              elif alternativa == '2':
-                clear()
-                print("\n===========LOGIN DE ADMIN===========")
-                logar(LoginAdm,ADM_conta)
-                
+                elif alternativa == '2':
+                    clear()
+                    print("\n===========LOGIN DE ADMIN===========")
+                    logar(LoginAdm, ADM_conta)
 
-              elif opcao == '3':
-                clear()
-                return menu()
+                elif alternativa == '3':
+                    clear()
+                    return menu()
                 
-
-              else:
-                pass
-                break
+                else:
+                    print(f'{red}Opção inválida. Tente novamente.{fim}')
             
         else:
             print(f'{red}Opção inválida. Tente novamente.{fim}')
-
 
 menu()
 
@@ -120,29 +107,3 @@ menu()
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-'''
-'
-
-print('ADM BOSTA')
-cadastrar(CadastroAdm,ADM_conta)
-logar(LoginAdm,ADM_conta)
-
-
-
-
-print('Aluno bosta')
-cadastrar(CadastroAluno,Aluno_conta)
-logar(LoginAluno,Aluno_conta)
-'''
