@@ -102,10 +102,3 @@ Olá, seja bem vindo ao MecIFRO, o que você deseja fazer?
             print(f'{red}Opção inválida. Tente novamente.{fim}')
 
 menu()
-
-
-
-
-
-
-
