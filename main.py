@@ -1,7 +1,9 @@
 '''Informática 2A, POO
 Integrantes:  Davi Tavares dos Santos, WILLIAM CAVALCANTE DAMACENO, Júlia Marcelly Braga Belchior, João Vitor Silva Maciel, Layra Vitória Mota Leal'''
 
-from classe import LoginAdm, CadastroAluno, CadastroAdm,LoginAluno
+from login import LoginAdm,LoginAluno
+from cadastro import CadastroAdm, CadastroAluno
+
 from extra import red,fim, clear
 
 
