@@ -103,4 +103,3 @@ Olá, seja bem vindo ao MecIFRO, o que você deseja fazer?
 
 menu()
 
-print('teste')
