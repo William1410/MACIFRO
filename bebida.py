@@ -14,3 +14,6 @@ def exibir_detalhes (self):
     print(f"volume:{self.ml} ml")
 
 bebida1 = Bebida ("refrigerante", 'refrigerante de cola', 5.00 , 10 , 350)
+bebida2 = Bebida ("agua", 'agua', 2.00 , 10 , 250)
+bebida3 = Bebida ("suco", "uva" , 4.00 , 10 , 450)
+
