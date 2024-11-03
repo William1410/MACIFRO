@@ -3,29 +3,28 @@ from extra import fim, green, red
 
 class Sistemalogin(ABC): #Arrumado
 
-  def __init__(self, nome: str, senha: str):
+  def __init__(self, nome: str, senha: str, status: bool):
     self.__nome = nome
     self.__senha = senha
-    
+    self.status = status
    
   def verificar(self, lista: list):  # mudar variavel 'lista' pela de vocês na hora da subclasse
-
     if len(lista) > 0:
       for c in lista:
         if c.getNome() == self.__nome and c.getSenha() == self.__senha:
           print(f'{green}Login realizado com sucesso{fim}')
-          
-          
+          self.status = True
 
         else: 
           print(f'{red}Valores incorretos{fim}')
+          
 
     else:
       print(f'{red}Não possue contas no banco dados {fim}')
 
 class LoginAluno(Sistemalogin):
-  def __init__(self, nome, senha):
-    super().__init__(nome, senha)
+  def __init__(self, nome, senha,status):
+    super().__init__(nome, senha,status)
   
 
   def verificar(self, lista):
@@ -45,3 +44,8 @@ class LoginAdm(Sistemalogin):#Arrumado
 
     else:
       print(f'{red}Codigo invalido{fim}')
+
+
+
+teste = LoginAluno('fsdfd','1234',False)
+print(teste.status)
