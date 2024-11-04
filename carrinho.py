@@ -1,23 +1,36 @@
+
 class Carrinho:
+    
     def __init__(self) -> None:
-        self.__lista_carrinho = {'cavalo': 2}
+        self.__lista_carrinho = []
     
     def ExibirIntens(self):
         if len(self.__lista_carrinho) == 0:
             print('Não há itens no seu carrinho.')
 
         else:
-            for chave,valor in self.__lista_carrinho.items():
-                print(f'{chave} : {valor}')
+            print("Nome: valor(Final): quantidade:")
+            index = 0
+            
+            for c in self.__lista_carrinho:
+                index+=1
+                if hasattr(c, 'qtd'): #verifica se a classe/objeto tem atributo
+                    print(f'{index} - {c.nome} : {c.valor_final} : {c.qtd}')
+                        
+
+                else:
+                    print(f'{index} - {c.nome} : {c.valor_final}')
+                    
 
 
-    def AdicionarItens(self,chave, valor):
+    def AdicionarItens(self,item):
+        self.__lista_carrinho.append(item)
+    
 
-        self.__lista_carrinho[chave] = valor
-
-
-teste = Carrinho()
-teste.ExibirIntens()
-
-teste.AdicionarItens('doido',3)
-teste.ExibirIntens()
+    def RemoverIntens(self,):
+        self.ExibirIntens()
+        remover = int(input('informe o valo do item:'))
+        if remover <=0:
+            print('Valor indisponivel')
+        else: 
+            self.__lista_carrinho.pop(remover-1)

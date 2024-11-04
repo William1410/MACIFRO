@@ -3,13 +3,25 @@ Integrantes:  Davi Tavares dos Santos, WILLIAM CAVALCANTE DAMACENO, Júlia Marce
 
 from login import LoginAdm,LoginAluno
 from cadastro import CadastroAdm, CadastroAluno
-
+from carrinho import Carrinho
 from extra import red,fim, clear
+from comida import Lanche,Almoco
 
 
+#teste 
+salgadoAssado = Lanche(6,'Salgado Asssado','Temos de carne e preseunto e queijo,',1)
+salgadoFrito = Lanche(5,'Salgado Frito','Temos de carne e preseunto e queijo,',1)
+Pao_de_queijo = Lanche(6,'Pão de quijo','Temos apenas sabor queijo',1)
+refeicao = Almoco(5,'Almoco','coisa ai ',1,0)
+aluno = CadastroAluno('davi','1234','usdfsfdsf')
+ADM = CadastroAdm('davi','1234','fdsfdf','101')
+#teste
 
-ADM_conta = []
-Aluno_conta = [] # Exemplo de conta
+
+ADM_conta = [ADM]
+Aluno_conta = [aluno] # Exemplo de conta
+
+
 
 
 def cadastrar(subclasse,lista: list):
@@ -23,17 +35,137 @@ def cadastrar(subclasse,lista: list):
 def logar(subclasse,lista: list):  
 
   global objeto_acessor
-  
   nome = input('Informe seu nome:')
   senha = input('Informe sua senha:')
-  objeto_acessor = subclasse(nome, senha)
+  
+  objeto_acessor = subclasse(nome, senha,False)
   objeto_acessor.verificar(lista)
+
+
+  
+
+
+def Interface_Aluno():
+    Usuario_Carrinho = Carrinho()
+    while True: 
+    
+        Interface = input('''Informe uma opção: 
+    1. Comida
+    2. Bebida
+    3. Carrinho
+    4. Remover
+    5. Sair
+    R:''')
+        
+        if Interface == '1':
+            Interface_comida = input(''' De comida Temos: 
+1.Salgado frito
+2.salgado assado
+3.Pão de queijo
+4.Almoço
+R: ''')
+            if Interface_comida == '1':
+                quantidadeAtual = int(input('Informe a quantidade:'))
+                salgadoFrito.qtd = quantidadeAtual
+                salgadoFrito.atualizar()
+                Usuario_Carrinho.AdicionarItens(salgadoFrito)
+            
+
+            elif Interface_comida == '2':
+                quantidadeAtual = int(input('Informe a quantidade:'))
+                salgadoAssado.qtd = quantidadeAtual
+                salgadoAssado.atualizar()
+                Usuario_Carrinho.AdicionarItens(salgadoAssado)
+
+            elif Interface_comida == '3':
+                quantidadeAtual = int(input('Informe a quantidade:'))
+                Pao_de_queijo.qtd = quantidadeAtual
+                Pao_de_queijo.atualizar()
+                Usuario_Carrinho.AdicionarItens(Pao_de_queijo)
+
+
+
+
+
+            elif Interface_comida == '4':
+                peso = int(input('Nós informe o peso da sua comida: '))
+                horario = float(input('Informe o horário: '))
+                refeicao.Peso = peso
+                refeicao.horario = horario
+                refeicao.atualizar()
+                Usuario_Carrinho.AdicionarItens(refeicao)
+            
+            
+        elif Interface == '2': #Apenas quando bebida estiver pronto.
+            Interface_bebida = input(''' De Bebida Temos: 
+1.Coca_cola
+2.Água
+3.Suco
+R: ''')
+
+        elif Interface == '3':
+            Usuario_Carrinho.ExibirIntens()  
+
+        elif Interface == '4':
+            Usuario_Carrinho.RemoverIntens()
+
+        elif Interface == '5':
+            break
+        else:
+            print('Valor invalido')
+
+
+
+
+
+def Interface_ADM():
+    while True: 
+    
+        Interface = input('''Qual deseja alterar:
+    1. Comida
+    2. Bebida
+    3. Sair
+    R:''')
+        
+        if Interface == '1':
+            Interface_comida = input(''' Qual deseja alterar: 
+1.Salgado frito
+2.salgado assado
+3.Pão de queijo
+4.Almoço
+R: ''')
+            if Interface_comida == '1':
+                ADM.alterar_Valor(salgadoFrito,20)
+            
+
+            elif Interface_comida == '2':
+                ADM.alterar_Valor(salgadoAssado,20)
+
+
+            elif Interface_comida == '3':
+                ADM.alterar_Valor(Pao_de_queijo,20)
+
+            elif Interface_comida == '4':
+                ADM.alterar_Valor(refeicao,20)
+            
+        elif Interface == '2': #Apenas quando bebida estiver pronto.
+            Interface_bebida = input(''' De Bebida Temos: 
+1.Coca_cola
+2.Água
+3.Suco
+R: ''')
+
+        elif Interface == '3':
+            break
+        else:
+            print('Valor invalido')
+
 
 
 
 
 def menu():
-    global objeto_acessor, ADM_conta, Aluno_conta, clear
+    global objeto_acessor, ADM_conta, Aluno_conta, clear, finalizar
 
     while True:
         
@@ -85,11 +217,21 @@ Olá, seja bem vindo ao MecIFRO, o que você deseja fazer?
                     clear()
                     print("\n===========LOGIN DE ALUNO===========")  
                     logar(LoginAluno, Aluno_conta)
+                    if objeto_acessor.status == True:
+                        Interface_Aluno()
 
+                    else:
+                        pass
+                    
                 elif alternativa == '2':
                     clear()
                     print("\n===========LOGIN DE ADMIN===========")
                     logar(LoginAdm, ADM_conta)
+                    if objeto_acessor.status == True:
+                        Interface_ADM()
+
+                    else:
+                        pass
 
                 elif alternativa == '3':
                     clear()
