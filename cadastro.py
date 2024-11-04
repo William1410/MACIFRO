@@ -1,5 +1,6 @@
 from extra import fim, green, red
 from abc import ABC
+from comida import Comida
 
 class SistemaCadastro(ABC):# arrumado
 
@@ -54,3 +55,6 @@ class CadastroAdm(SistemaCadastro):#arrumado
       super().Cadastro(lista,objeto)
     else:
       print(f'{red}Conta não cadastrada no banco de dados{fim}')
+    
+  def alterar_Valor(self,comida: Comida, Novo_valor):
+    comida.set_valor(Novo_valor)

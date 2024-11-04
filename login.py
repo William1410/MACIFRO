@@ -1,6 +1,7 @@
 from abc import ABC
 from extra import fim, green, red
 
+
 class Sistemalogin(ABC): #Arrumado
 
   def __init__(self, nome: str, senha: str, status: bool):
@@ -32,9 +33,10 @@ class LoginAluno(Sistemalogin):
 
   
 class LoginAdm(Sistemalogin):#Arrumado
-  def __init__(self, nome, senha,cod = '101'):
-    super().__init__(nome, senha)
+  def __init__(self, nome, senha,status,cod = '101'):
+    super().__init__(nome, senha,status)
     self.__cod = cod
+  
 
   def verificar(self, lista) -> None:
     cod_adm = input('Informe o cod de ADM:')
@@ -44,8 +46,5 @@ class LoginAdm(Sistemalogin):#Arrumado
 
     else:
       print(f'{red}Codigo invalido{fim}')
+  
 
-
-
-teste = LoginAluno('fsdfd','1234',False)
-print(teste.status)

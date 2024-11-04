@@ -9,14 +9,16 @@ from comida import Lanche,Almoco
 
 
 #teste 
-salgadoFrito = Lanche(6,'Salgado Frito','Temos de carne e preseunto e queijo,',1)
-
+salgadoAssado = Lanche(6,'Salgado Asssado','Temos de carne e preseunto e queijo,',1)
+salgadoFrito = Lanche(5,'Salgado Frito','Temos de carne e preseunto e queijo,',1)
+Pao_de_queijo = Lanche(6,'Pão de quijo','Temos apenas sabor queijo',1)
 refeicao = Almoco(5,'Almoco','coisa ai ',1,0)
-
 aluno = CadastroAluno('davi','1234','usdfsfdsf')
+ADM = CadastroAdm('davi','1234','fdsfdf','101')
 #teste
 
-ADM_conta = []
+
+ADM_conta = [ADM]
 Aluno_conta = [aluno] # Exemplo de conta
 
 
@@ -39,15 +41,11 @@ def logar(subclasse,lista: list):
   objeto_acessor = subclasse(nome, senha,False)
   objeto_acessor.verificar(lista)
 
-  '''if objeto_acessor.status == True:
-      return True
-  else:
-      pass'''
 
   
 
 
-def Interface_principal():
+def Interface_Aluno():
     Usuario_Carrinho = Carrinho()
     while True: 
     
@@ -55,8 +53,9 @@ def Interface_principal():
     1. Comida
     2. Bebida
     3. Carrinho
-    4. sair
-    R: ''')
+    4. Remover
+    5. Sair
+    R:''')
         
         if Interface == '1':
             Interface_comida = input(''' De comida Temos: 
@@ -67,14 +66,35 @@ def Interface_principal():
 R: ''')
             if Interface_comida == '1':
                 quantidadeAtual = int(input('Informe a quantidade:'))
-                salgadoFrito.alterar_quantidade(quantidadeAtual)
+                salgadoFrito.qtd = quantidadeAtual
+                salgadoFrito.atualizar()
                 Usuario_Carrinho.AdicionarItens(salgadoFrito)
             
+
+            elif Interface_comida == '2':
+                quantidadeAtual = int(input('Informe a quantidade:'))
+                salgadoAssado.qtd = quantidadeAtual
+                salgadoAssado.atualizar()
+                Usuario_Carrinho.AdicionarItens(salgadoAssado)
+
+            elif Interface_comida == '3':
+                quantidadeAtual = int(input('Informe a quantidade:'))
+                Pao_de_queijo.qtd = quantidadeAtual
+                Pao_de_queijo.atualizar()
+                Usuario_Carrinho.AdicionarItens(Pao_de_queijo)
+
+
+
+
+
             elif Interface_comida == '4':
                 peso = int(input('Nós informe o peso da sua comida: '))
-                horario = int(input('Informe o horário: '))
-                refeicao.alterar_peso_horario(peso,horario)
+                horario = float(input('Informe o horário: '))
+                refeicao.Peso = peso
+                refeicao.horario = horario
+                refeicao.atualizar()
                 Usuario_Carrinho.AdicionarItens(refeicao)
+            
             
         elif Interface == '2': #Apenas quando bebida estiver pronto.
             Interface_bebida = input(''' De Bebida Temos: 
@@ -85,12 +105,60 @@ R: ''')
 
         elif Interface == '3':
             Usuario_Carrinho.ExibirIntens()  
-        elif Interface == '4':
-            break
 
+        elif Interface == '4':
+            Usuario_Carrinho.RemoverIntens()
+
+        elif Interface == '5':
+            break
         else:
-            print('Valor invalido.')
+            print('Valor invalido')
+
+
+
+
+
+def Interface_ADM():
+    while True: 
     
+        Interface = input('''Qual deseja alterar:
+    1. Comida
+    2. Bebida
+    3. Sair
+    R:''')
+        
+        if Interface == '1':
+            Interface_comida = input(''' Qual deseja alterar: 
+1.Salgado frito
+2.salgado assado
+3.Pão de queijo
+4.Almoço
+R: ''')
+            if Interface_comida == '1':
+                ADM.alterar_Valor(salgadoFrito,20)
+            
+
+            elif Interface_comida == '2':
+                ADM.alterar_Valor(salgadoAssado,20)
+
+
+            elif Interface_comida == '3':
+                ADM.alterar_Valor(Pao_de_queijo,20)
+
+            elif Interface_comida == '4':
+                ADM.alterar_Valor(refeicao,20)
+            
+        elif Interface == '2': #Apenas quando bebida estiver pronto.
+            Interface_bebida = input(''' De Bebida Temos: 
+1.Coca_cola
+2.Água
+3.Suco
+R: ''')
+
+        elif Interface == '3':
+            break
+        else:
+            print('Valor invalido')
 
 
 
@@ -150,22 +218,20 @@ Olá, seja bem vindo ao MecIFRO, o que você deseja fazer?
                     print("\n===========LOGIN DE ALUNO===========")  
                     logar(LoginAluno, Aluno_conta)
                     if objeto_acessor.status == True:
-                        while True: #O aluno fica nessa interface.
-                            Interface_principal()
+                        Interface_Aluno()
+
                     else:
                         pass
                     
-
-
-
-
-
-
-
                 elif alternativa == '2':
                     clear()
                     print("\n===========LOGIN DE ADMIN===========")
                     logar(LoginAdm, ADM_conta)
+                    if objeto_acessor.status == True:
+                        Interface_ADM()
+
+                    else:
+                        pass
 
                 elif alternativa == '3':
                     clear()
