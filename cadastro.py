@@ -56,5 +56,5 @@ class CadastroAdm(SistemaCadastro):#arrumado
     else:
       print(f'{red}Conta não cadastrada no banco de dados{fim}')
     
-  def alterar_Valor(self,comida: Comida, Novo_valor):
-    comida.set_valor(Novo_valor)
+  def alterar_Valor(self, item: object, Novo_valor):
+    item.set_valor(Novo_valor)

@@ -6,6 +6,7 @@ from cadastro import CadastroAdm, CadastroAluno
 from carrinho import Carrinho
 from extra import red,fim, clear
 from comida import Lanche,Almoco
+from bebida import Bebida
 
 
 #teste 
@@ -13,6 +14,10 @@ salgadoAssado = Lanche(6,'Salgado Asssado','Temos de carne e preseunto e queijo,
 salgadoFrito = Lanche(5,'Salgado Frito','Temos de carne e preseunto e queijo,',1)
 Pao_de_queijo = Lanche(6,'Pão de quijo','Temos apenas sabor queijo',1)
 refeicao = Almoco(5,'Almoco','coisa ai ',1,0)
+refrigerante = Bebida ("refrigerante", 'refrigerante de cola', 5.00 , 1 , 350)
+agua = Bebida ("agua", 'agua', 2.00 , 1 , 250)
+suco = Bebida ("suco", "uva" , 4.00 , 1 , 450)
+
 aluno = CadastroAluno('davi','1234','usdfsfdsf')
 ADM = CadastroAdm('davi','1234','fdsfdf','101')
 #teste
@@ -96,12 +101,34 @@ R: ''')
                 Usuario_Carrinho.AdicionarItens(refeicao)
             
             
-        elif Interface == '2': #Apenas quando bebida estiver pronto.
+        elif Interface == '2':
             Interface_bebida = input(''' De Bebida Temos: 
 1.Coca_cola
 2.Água
 3.Suco
 R: ''')
+            
+            if Interface_bebida == '1':
+                quantidadeAtual = int(input('Informe a quantidade:'))
+                refrigerante.qtd = quantidadeAtual
+                refrigerante.atualizar()
+                Usuario_Carrinho.AdicionarItens(refrigerante)
+
+            elif Interface_bebida == '2':
+                quantidadeAtual = int(input('Informe a quantidade:'))
+                agua.qtd = quantidadeAtual
+                agua.atualizar()
+                agua.AdicionarItens(refrigerante)
+
+            elif Interface_bebida == '3':
+                quantidadeAtual = int(input('Informe a quantidade:'))
+                suco.qtd = quantidadeAtual
+                suco.atualizar()
+                Usuario_Carrinho.AdicionarItens(suco)
+
+            else:
+                print('Valor invalido')
+                pass
 
         elif Interface == '3':
             Usuario_Carrinho.ExibirIntens()  
@@ -135,25 +162,45 @@ def Interface_ADM():
 4.Almoço
 R: ''')
             if Interface_comida == '1':
-                ADM.alterar_Valor(salgadoFrito,20)
+                valor = input('Informe o novo valor: ')
+                ADM.alterar_Valor(salgadoFrito,valor)
             
 
             elif Interface_comida == '2':
-                ADM.alterar_Valor(salgadoAssado,20)
+                valor = input('Informe o novo valor: ')
+                ADM.alterar_Valor(salgadoAssado,valor)
 
 
             elif Interface_comida == '3':
-                ADM.alterar_Valor(Pao_de_queijo,20)
+                valor = input('Informe o novo valor: ')
+                ADM.alterar_Valor(Pao_de_queijo,valor)
 
             elif Interface_comida == '4':
-                ADM.alterar_Valor(refeicao,20)
+                valor = input('Informe o novo valor: ')
+                ADM.alterar_Valor(refeicao,valor)
             
         elif Interface == '2': #Apenas quando bebida estiver pronto.
-            Interface_bebida = input(''' De Bebida Temos: 
+            Interface_bebida = input(''' Qual deseja alterar: 
 1.Coca_cola
 2.Água
 3.Suco
 R: ''')
+            
+            if Interface_bebida == '1':
+                valor = input('Informe o novo valor: ')
+                ADM.alterar_Valor(refrigerante,valor)
+
+            elif Interface_bebida == '2':
+                valor = input('Informe o novo valor: ')
+                ADM.alterar_Valor(agua,valor)
+
+            elif Interface_bebida == '3':
+                valor = input('Informe o novo valor: ')
+                ADM.alterar_Valor(suco,valor)
+
+            else:
+                print('Valor invalido')
+                pass
 
         elif Interface == '3':
             break
