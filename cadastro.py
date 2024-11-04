@@ -2,7 +2,7 @@ from extra import fim, green, red
 from abc import ABC
 from comida import Comida
 
-class SistemaCadastro(ABC):# arrumado
+class SistemaCadastro(ABC): #superclasse
 
   def __init__(self, nome: str, senha: str, email: str):
     self.__nome = nome
@@ -18,8 +18,8 @@ class SistemaCadastro(ABC):# arrumado
   def getSenha(self) -> str:
     return self.__senha
   
-
-class CadastroAluno(SistemaCadastro):
+# CadastroAluno contém herança de Cadastro, pois herdam vários atributos e métodos.
+class CadastroAluno(SistemaCadastro): #subclasse
 
   def __init__(self, nome, senha, email):
     super().__init__(nome, senha, email)
@@ -34,8 +34,9 @@ class CadastroAluno(SistemaCadastro):
   def Cadastro(self, lista,objeto):
     super().Cadastro(lista,objeto)
 
-
-class CadastroAdm(SistemaCadastro):#arrumado
+# CadastroAdm contém herança de Cadastro, pois herdam vários atributos e métodos
+class CadastroAdm(SistemaCadastro): #subclasse
+  
 
   def __init__(self, nome, senha, email,cod = '101'): # cod é a verificação do ADM
     super().__init__(nome, senha, email)

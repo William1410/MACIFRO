@@ -8,8 +8,7 @@ from extra import red,fim, clear
 from comida import Lanche,Almoco
 from bebida import Bebida
 
-
-#teste 
+ 
 salgadoAssado = Lanche(6,'Salgado Asssado','Temos de carne e preseunto e queijo,',1)
 salgadoFrito = Lanche(5,'Salgado Frito','Temos de carne e preseunto e queijo,',1)
 Pao_de_queijo = Lanche(6,'Pão de quijo','Temos apenas sabor queijo',1)
@@ -20,7 +19,7 @@ suco = Bebida ("suco", "uva" , 4.00 , 1 , 450)
 
 aluno = CadastroAluno('davi','1234','usdfsfdsf')
 ADM = CadastroAdm('davi','1234','fdsfdf','101')
-#teste
+
 
 
 ADM_conta = [ADM]
@@ -50,7 +49,7 @@ def logar(subclasse,lista: list):
   
 
 
-def Interface_Aluno():
+def Interface_Aluno(): #A classe "comprar" virou uma função
     Usuario_Carrinho = Carrinho()
     while True: 
     
