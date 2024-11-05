@@ -8,6 +8,7 @@ from extra import red,fim, clear
 from comida import Lanche,Almoco
 from bebida import Bebida
 
+print("test")
  
 salgadoAssado = Lanche(6,'Salgado Asssado','Temos de carne e preseunto e queijo,',1)
 salgadoFrito = Lanche(5,'Salgado Frito','Temos de carne e preseunto e queijo,',1)
